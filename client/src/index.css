@@ -19,11 +19,11 @@ html {
   @apply relative w-full h-screen overflow-hidden;
 }
 
-.home {
+.HomePage {
   @apply w-fit xl:h-full flex xl:justify-between justify-start items-start flex-col xl:py-8 xl:px-36 sm:p-8 p-6 max-xl:gap-7 absolute z-10;
 }
 
-.home-content {
+.HomePage-content {
   @apply flex-1 xl:justify-center justify-start flex flex-col gap-10;
 }
 

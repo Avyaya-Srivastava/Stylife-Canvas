@@ -1,13 +1,13 @@
 import Canvas from './canvas';
 import Customizer from './pages/Customizer';
-import Home from './pages/Home';
+import HomePage from './pages/HomePage';
 
 function App() {
 
   return (
   
       <main className='app transition-all ease-in'>
-        <Home/>
+        <HomePage/>
         <Canvas/>
         <Customizer/>
       </main>

@@ -49,13 +49,19 @@ const Customizer = () => {
         }
     }
 
+    // Toggle the selected editor tab 
+    const toggleEditorTab = (tabName) => {
+        setActiveEditorTab((prevTab) => (prevTab === tabName ? '' : tabName));
+    }
+
     const handleSubmit = async (type) => {
         if(!prompt) return alert("Please enter a prompt");
 
         try{
+            // Call our backend to generate an image
             setGeneratingImg(true);
 
-            const response = await fetch('http://localhost:8080/api/v1/dalle', {
+            const response = await fetch('http://ai-stitches.onrender.com/api/v1/ai', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
@@ -67,7 +73,7 @@ const Customizer = () => {
 
             handleDecals(type, `data:image/png;base64,${data.photo}`)
         } catch (error) {
-            alert(error)
+            alert(error);
         } finally {
             setGeneratingImg(false);
             setActiveEditorTab("");
@@ -94,7 +100,7 @@ const Customizer = () => {
               break;
             default:
                 state.isLogoTexture = true;
-                state.isFullTexture = false;
+                state.isFullTexture = false;              
         }
 
         setActiveFilterTab((prevState) => {
@@ -128,11 +134,10 @@ const Customizer = () => {
                                     <Tab
                                       key={tab.name}
                                       tab={tab}
-                                      handleClick={() => setActiveEditorTab(tab.name)}
+                                      handleClick={() => toggleEditorTab(tab.name)}
+                                      isActive = {activeEditorTab === tab.name} 
                                     />
                                 ))}
-
-
                                 {generateTabContent()}
                             </div>
                         </div>
@@ -156,11 +161,11 @@ const Customizer = () => {
                     >
                          {FilterTabs.map((tab) => (
                                      <Tab
-                                      key={tab.name}
-                                      tab={tab}
-                                      isFilterTab
-                                      isActiveTab={activeFilterTab[tab.name]}
-                                      handleClick={() => handleActiveFilterTab(tab.name)}
+                                        key={tab.name}
+                                        tab={tab}
+                                        isFilterTab
+                                        isActiveTab={activeFilterTab[tab.name]}
+                                        handleClick={() => handleActiveFilterTab(tab.name)}
                                     />
                          ))}  
 

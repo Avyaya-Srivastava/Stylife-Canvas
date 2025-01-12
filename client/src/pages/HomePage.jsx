@@ -10,25 +10,26 @@ import {
   slideAnimation
 } from '../config/motion';
 
-const Home = () => {
+const HomePage = () => {
   const snap = useSnapshot(state);
+  
 
   return (
    <AnimatePresence>
     {snap.intro &&(
-      <motion.section className='home' {...slideAnimation('left')}>
+      <motion.section className='HomePage' {...slideAnimation('left')}>
         <motion.header {...slideAnimation("down")}>
           <img
-            src='./threejs.png'
+            src='/src/assets/SL-logo.png'
             alt='logo'
-            className='w-8 h-8 object-contain'
+            className='w-30 h-12 object-contain'
           />
         </motion.header>
 
-        <motion.div className='home-content' {...headContainerAnimation}>
+        <motion.div className='HomePage-content' {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
               <h1 className='head-text'>
-                LET'S <br className='x1:block hidden'/>STYLIFE.
+                LET'S <br></br> <br className='x1:block hidden'/>STYLIFE.
               </h1>
             </motion.div>
         </motion.div>
@@ -50,4 +51,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default HomePage;
