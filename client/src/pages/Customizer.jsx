@@ -164,6 +164,14 @@ const Customizer = () => {
                                     />
                          ))}  
 
+                         <button className='download-btn' onClick={downloadCanvasToImage}>
+                            <img 
+                                src={download} 
+                                alt='download' 
+                                className='w-6 h-6 object-contain'
+                            />
+                            </button>
+
                     </motion.div>        
                 </>
          )}
