@@ -61,16 +61,15 @@ const Customizer = () => {
             // Call our backend to generate an image
             setGeneratingImg(true);
 
-            const response = await fetch('http://ai-stitches.onrender.com/api/v1/ai', {
+            const response = await fetch(`${config[process.env.NODE_ENV].backendUrl}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json'},
                 body: JSON.stringify({
                     prompt,
-                })
-            })
+                }),
+            });
 
             const data = await response.json();
-
             handleDecals(type, `data:image/png;base64,${data.photo}`)
         } catch (error) {
             alert(error);
@@ -79,16 +78,18 @@ const Customizer = () => {
             setActiveEditorTab("");
         }
     }
+            
 
-    const handleDecals = (type, result) => {
-        const decalType = DecalTypes[type];
+          const handleDecals = (type, result) => {
+            const decalType = DecalTypes[type];
+          
+            state[decalType.stateProperty] = result;
 
-        state[decalType.stateProperty]= result;
-
-        if(!activeFilterTab[decalType.filterTab]){
-            handleActiveFilterTab(decalType.filterTab)
+            if (!activeFilterTab[decalType.filterTab]) {
+                handleActiveFilterTab(decalType.filterTab)
+            }
         }
-    }
+    
 
     const handleActiveFilterTab = (tabName) => {
         switch (tabName){

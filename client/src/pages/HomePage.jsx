@@ -20,7 +20,7 @@ const HomePage = () => {
       <motion.section className='HomePage' {...slideAnimation('left')}>
         <motion.header {...slideAnimation("down")}>
           <img
-            src='/src/assets/SL-logo.png'
+            src='/src/assets/logo.png'
             alt='logo'
             className='w-30 h-12 object-contain'
           />
