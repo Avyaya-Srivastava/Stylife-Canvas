@@ -36,7 +36,9 @@ router.post("/", async (req, res) => {
         console.log(imageUrl);
         } catch (error) {
           console.error(error.message);
-          res.status(500).json({ message: "Something went wrong!" });
+          if (!res.headersSent) {
+            res.status(500).json({ message: "Something went wrong!" });
+          }
         }
       });
 
