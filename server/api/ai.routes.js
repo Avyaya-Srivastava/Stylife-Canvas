@@ -1,14 +1,14 @@
 import express from "express";
 import axios from "axios";
 
-const router = express.Router();
+const api = express.Router();
 
-router.get('/', (req, res) => {
+api.get('/', (req, res) => {
     res.status(200).json({ message: 'Hello from Stylife' });
   });
   
 
-router.post("/", async (req, res) => {
+api.post("/", async (req, res) => {
     const { prompt } = req.body;
     const apiKey = process.env.RAPID_API_KEY;
 
@@ -42,4 +42,4 @@ router.post("/", async (req, res) => {
         }
       });
 
-export default router;
+export default api;

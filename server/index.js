@@ -2,7 +2,7 @@ import express from 'express';
 import * as dotenv from 'dotenv';
 import cors from 'cors';
 
-import aiRoutes from "./routes/ai.routes.js";
+import aiRoutes from "./api/ai.routes.js";
 
 dotenv.config();
 
