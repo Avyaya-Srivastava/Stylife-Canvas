@@ -33,7 +33,7 @@ api.post("/", async (req, res) => {
         const image = response.data;
 
         res.json({ photo: image });
-        console.log(imageUrl);
+        console.log(image);
         } catch (error) {
           console.error(error.message);
           if (!res.headersSent) {
