@@ -14,6 +14,8 @@ if (!process.env.RAPID_API_KEY) {
 const app = express();
 const port = process.env.PORT || 5000;
 
+
+
 // CORS configuration to allow requests from specific domains
 const corsOptions = {
   origin: (origin, callback) => {
@@ -42,4 +44,4 @@ app.get("/", (req, res) => {
     res.status(200).send({ message: "Hello form Stylife"});
 })
 
-app.listen(port, () => console.log(`Server is running on port ${port}`));
+app.listen(port,'0.0.0.0', () =>{ console.log(`Server is running on port ${port}`)});
